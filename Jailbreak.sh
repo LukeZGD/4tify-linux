@@ -260,22 +260,8 @@ EOD
     expect eof
 EOD
 )
-echo "Fetching Springboard..."
 
-/usr/bin/expect <(cat << 'EOD'
-    log_user 0
-    set timeout -1
-    spawn scp -P 2022 root@localhost:/mnt1/var/mobile/Library/Preferences/com.apple.springboard.plist 
-    expect "root@localhost's password:"
-    send "alpine\r"
-    expect eof
-EOD
-)
-echo "Patching Springboard"
-
-plutil -insert SBShowNonDefaultSystemApps -bool YES com.apple.springboard.plist
-
-echo "Sending Springboard"
+echo "Sending patched Springboard"
 
 /usr/bin/expect <(cat << 'EOD'
     log_user 0
@@ -286,6 +272,7 @@ echo "Sending Springboard"
     expect eof
 EOD
 )
+
 echo "Patching Fstab..."
 
 /usr/bin/expect <(cat << 'EOD'
