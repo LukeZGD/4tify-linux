@@ -9,3 +9,15 @@ ramdisk
 /upload\040kernelcache.release.n90
 bootx
 /exit
+DeviceTree.n90ap.img3
+exit
+DeviceTree.n90ap.img3
+devicetree\r
+ls
+erf
+clear
+send DeviceTree.n90ap.img3\r
+send DeviceTree.n90ap.img3
+send DeviceTree.n90ap.img3\r
+/send DeviceTree.n90ap.img3\r
+/help
