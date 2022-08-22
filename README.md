@@ -1,14 +1,9 @@
 # 4tify - v0.1_beta
 iOS 4 Dualbooting Made Simple By [zzanehip](https://github.com/zzanehip) and ported to linux by [alesx2io](https://github.com/alesx2io)
 
-## What and Why?
 
-* In my opinion, iOS 4 has always been the illusive iOS. Methods to install it are either dificult to find, or dificult to use.
-* Which is ironic, I honestly belive iOS 4 is the gold standard of iOS.
-* The goal in this project is to make running iOS 4 less of challenge, and more of a convient reality. 
-* Why dualbooting? Simple, keep your most up to date iOS, but still be able to use a cherished iOS.
-* This is still very much an early phase project, use this at *your own risk.* If you have any issues, or find any bugs please report them. I hope to simplify the process even further as well.
-* I hope this brings a little you a little joy while you're cooped up inside ;)  
+## Important Note 
+* This is still very much an early phase project, use it at *your own risk.* If you have any issues, or find any bugs please report them.
 
 ## What's Supported
 * iPhone 4 (3,1)
