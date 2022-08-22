@@ -27,7 +27,7 @@ We need to get our device onto a modified version of iOS 7.1.2 with lwvm patched
 
 1. First, build a patched IPSW and grab blobs (omit < > when entering):
 
-`./Create-Restore.sh <Decimal-ECID> 
+`./Create-Restore.sh <Decimal-ECID>`
 
 2. Restore the Custom IPSW (Enter the root password, when asked, the default one is alpine. If the restore process doesn't start after e.g. fish: storing file 65536 (65536) just click your home button or power button, or even unplug and replug the device):		
 
