@@ -274,17 +274,17 @@ EOD
 )
 
 echo "Patching Fstab..."
+sleep 3
 
-/usr/bin/expect <(cat << 'EOD'
+/usr/bin/expect <(cat << 'EOD'    
     log_user 0
     set timeout -1
     spawn scp -P 2022 fstab root@localhost:/mnt1/etc
     expect "root@localhost's password:"
     send "alpine\r"
     expect eof
-EOD    
+EOD
 )
-echo ""
 
 echo "Rebooting..."
 
