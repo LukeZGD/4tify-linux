@@ -7,7 +7,7 @@ echo "Sending iBSS and iBEC"
 ./irecovery -f iBSS.n90ap.RELEASE.dfu
 ./irecovery -f iBEC.n90ap.RELEASE.dfu
 echo "Waiting for Connection, This Might Take Some Time..."
-while !(lsusb 2> /dev/null | grep "Apple, Inc. Mobile Device" 2> /dev/null); do
+while !(lsusb 2> /dev/null | grep "Apple, Inc. Apple Mobile Device" 2> /dev/null); do
     sleep 1
 done
 n=0
@@ -273,17 +273,7 @@ EOD
 
 echo "Fetching and Patching Springboard..."
 
-/usr/bin/expect <(cat << 'EOD'
-    log_user 0
-    set timeout -1
-    spawn ssh -p 2022 root@localhost
-    expect "root@localhost's password:"
-    send "alpine\r"
-    expect "sh-4.0#"
-    send "plutil -insert SBShowNonDefaultSystemApps -bool YES /mnt1/var/mobile/Library/Preferences/com.apple.springboard.plist
-    expect eof
-EOD
-)
+ssh root@localhost -p 2022 'plutil -insert SBShowNonDefaultSystemApps -bool YES /mnt1/var/mobile/Library/Preferences/com.apple.springboard.plist' & killall ssh
 
 echo "Patching Fstab..."
 sleep 3
