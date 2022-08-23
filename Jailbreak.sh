@@ -7,7 +7,7 @@ echo "Sending iBSS and iBEC"
 ./irecovery -f iBSS.n90ap.RELEASE.dfu
 ./irecovery -f iBEC.n90ap.RELEASE.dfu
 echo "Waiting for Connection, This Might Take Some Time..."
-while !(lsusb 2> /dev/null | grep "Apple, Inc. Apple Mobile Device" 2> /dev/null); do
+while !(lsusb 2> /dev/null | grep "Apple, Inc. Mobile Device" 2> /dev/null); do
     sleep 1
 done
 n=0
@@ -186,6 +186,16 @@ echo "Sending Debs..."
 /usr/bin/expect <(cat << 'EOD'
     log_user 0
     set timeout -1
+    spawn scp -P 2022 com.ericasadun.utilities_0.4.2_iphoneos-arm.deb root@localhost:/mnt1/private/var/root/Media/Cydia/AutoInstall
+    expect "root@localhost's password:"
+    send "alpine\r"
+    expect eof
+EOD
+)
+
+/usr/bin/expect <(cat << 'EOD'
+    log_user 0
+    set timeout -1
     spawn scp -P 2022 org.thebigboss.repo.icons_1.0.deb root@localhost:/mnt1/private/var/root/Media/Cydia/AutoInstall
     expect "root@localhost's password:"
     send "alpine\r"
@@ -261,14 +271,16 @@ EOD
 EOD
 )
 
-echo "Sending patched Springboard"
+echo "Fetching and Patching Springboard..."
 
 /usr/bin/expect <(cat << 'EOD'
     log_user 0
     set timeout -1
-    spawn scp -P 2022 com.apple.springboard.plist root@localhost:/mnt1/var/mobile/Library/Preferences
+    spawn ssh -p 2022 root@localhost
     expect "root@localhost's password:"
     send "alpine\r"
+    expect "sh-4.0#"
+    send "plutil -insert SBShowNonDefaultSystemApps -bool YES /mnt1/var/mobile/Library/Preferences/com.apple.springboard.plist
     expect eof
 EOD
 )
