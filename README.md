@@ -4,7 +4,8 @@ iOS 4 Dualbooting Made Simple By [zzanehip](https://github.com/zzanehip) and por
 
 ## Important Note 
 * This is still very much an early phase project, use it at *your own risk.* If you have any issues, or find any bugs please report them.
-* Make sure these are installed onto your system before proceeding: [libusbmuxd](https://github.com/libimobiledevice/libusbmuxd), python 2 (unfortunately), cUrl, expect.
+* Make sure these are installed onto your system before proceeding: [libusbmuxd](https://github.com/libimobiledevice/libusbmuxd), python 2 (unfortunately), [cUrl](https://github.com/curl/curl), expect.
+* You may need to edit your `~/.ssh/config file` to enable the ssh-dss (DSA) public key algorithm to be able to ssh into your device. For further information check [OpenSSH Legacy Options](https://www.openssh.com/legacy.html) page.
 
 ## What's Supported
 * iPhone 4 (3,1)
@@ -67,8 +68,9 @@ Now, we'll partition our device, install iOS 4, and patch it. Once this is done,
 `./Reinstall-App.sh <ip-address>`
 
 ## Thanks to:
+* [RoxasKH](https://github.com/RoxasKH) for helping me with almost all the work since i have some skill issues
 * [checkra1n](https://github.com/checkra1n) for libdmg-hfsplus fork
-* [tihmstar](https://github.com/tihmstar) for partialZipBrowser
+* [tihmstar](https://github.com/tihmstar) for partialZipBrowser and tsschecker
 * [verygenericname](https://github.com/verygenericname) for helping me with some scripting
 * [zzanehip](https://github.com/zzanehip) for the original project
 * [winocm](https://github.com/winocm) and [xerub](https://github.com/xerub) for kloader and the modified version of iRecovery
