@@ -271,10 +271,34 @@ EOD
 EOD
 )
 
-echo "Fetching and Patching Springboard..."
+/usr/bin/expect <(cat << 'EOD'
+    log_user 0
+    set timeout -1
+    spawn ssh -o StrictHostKeyChecking=no -p 2022 root@localhost
+    expect "root@localhost's password:"
+    send "alpine\r"
+    expect "sh-4.0#"
+    send "mount_hfs /dev/disk0s1 /mnt1 \r"
+    expect "sh-4.0#"
+    send "mount_hfs /dev/disk0s2s1 /mnt1/private/var \r"
+    expect "sh-4.0#"
+    send "exit \r"
+    expect eof
+EOD
+)
 
-ssh root@localhost -p 2022 'plutil -insert SBShowNonDefaultSystemApps -bool YES /mnt1/var/mobile/Library/Preferences/com.apple.springboard.plist' & killall ssh
+echo "Sending Patched Springboard"
+sleep 3
 
+/usr/bin/expect <(cat << 'EOD'    
+    log_user 0
+    set timeout -1
+    spawn scp -P 2022 com.apple.springboard.plist root@localhost:/mnt1/var/mobile/Library/Preferences
+    expect "root@localhost's password:"
+    send "alpine\r"
+    expect eof
+EOD
+)
 echo "Patching Fstab..."
 sleep 3
 
