@@ -22,5 +22,5 @@ echo "Done!"
 
 echo "The Custom IPSW will now be restored" & sleep 3
 set +e
-./idevicerestore -e -y custom.ipsw
+./idevicerestore -e -w custom.ipsw
 echo "Done, if you receive an error about the device not disconnecting, quicly unplug and replug the device after Sending iBSS gets to 100%"

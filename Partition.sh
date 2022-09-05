@@ -3,7 +3,7 @@ set -e
 IP=$1
 cd support_files/4.3/File_System
 
-iproxy 2222 22 & /usr/bin/expect <(cat << 'EOD'
+./iproxy 2222 22 & /usr/bin/expect <(cat << 'EOD'
     set timeout -1
     spawn ssh -o StrictHostKeyChecking=no -p 2222 root@localhost
     expect "root@localhost's password:"

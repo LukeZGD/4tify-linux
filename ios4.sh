@@ -2,7 +2,10 @@
 set -e
 IP=$1
 cd support_files/4.3/File_System
-./pzb -g 038-0688-006.dmg https://secure-appldnld.apple.com/iPhone4/041-0330.20110311.Cswe3/iPhone3,1_4.3_8F190_Restore.ipsw
+if [[ ! -e iPhone3,1_4.3_8F190_Restore.ipsw ]]; then
+    curl -O https://secure-appldnld.apple.com/iPhone4/041-0330.20110311.Cswe3/iPhone3,1_4.3_8F190_Restore.ipsw --progress-bar
+fi
+unzip -j iPhone3,1_4.3_8F190_Restore.ipsw 038-0688-006.dmg
 ./dmg extract 038-0688-006.dmg decrypted.dmg -k 34904e749a8c5cfabecc6c3340816d85e7fc4de61c968ca93be621a9b9520d6466a1456a
 ./dmg build decrypted.dmg UDZO.dmg
 

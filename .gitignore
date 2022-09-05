@@ -1,0 +1,8 @@
+*.dfu
+*.dmg
+*.ipsw
+*.pyc
+*.shsh
+*.xml
+custom*
+pwned*
